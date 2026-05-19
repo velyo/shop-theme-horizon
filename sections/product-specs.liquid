@@ -1,0 +1,170 @@
+{% liquid
+  assign has_specs_text = product.metafields.custom.specs_text
+  assign has_choice_advices = product.metafields.custom.choice_advices
+  assign has_care_items = product.metafields.custom.care_items
+  assign has_materials = product.metafields.custom.materials
+  assign has_producer = product.metafields.custom.producer
+  assign has_country = product.metafields.custom.country
+%}
+
+{% if product %}
+{% if has_specs_text != blank or has_choice_advices != blank or has_care_items != blank or has_materials != blank or has_producer != blank or has_country != blank %}
+  <div class="product-specs product-specs-{{ section.id }}">
+    {% if has_specs_text %}
+      <h3 class="product-specs__title">{{ section.settings.specs_title }}</h3>
+      <ul class="product-specs__list">
+        {% assign text_values = product.metafields.custom.specs_text | split: '"value":"' %}
+        {% for value in text_values %}
+          {% if forloop.index > 1 %}
+            {% capture item %}{{ value | split: '"' | first }}{% endcapture %}
+            {% if item != '' %}
+              <li>{{ item }}</li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if has_choice_advices %}
+      <h3 class="product-specs__title">{{ section.settings.choice_title }}</h3>
+      <ul class="product-specs__list">
+        {% assign text_values = product.metafields.custom.choice_advices | split: '"value":"' %}
+        {% for value in text_values %}
+          {% if forloop.index > 1 %}
+            {% capture item %}{{ value | split: '"' | first }}{% endcapture %}
+            {% if item != '' %}
+              <li>{{ item }}</li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if has_care_items %}
+      <h3 class="product-specs__title">{{ section.settings.care_title }}</h3>
+      <ul class="product-specs__list">
+        {% assign text_values = product.metafields.custom.care_items | split: '"value":"' %}
+        {% for value in text_values %}
+          {% if forloop.index > 1 %}
+            {% capture item %}{{ value | split: '"' | first }}{% endcapture %}
+            {% if item != '' %}
+              <li>{{ item }}</li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if has_materials %}
+      <p class="product-specs__line"><strong>{{ section.settings.materials_title }}</strong> {{ product.metafields.custom.materials | newline_to_br }}</p>
+    {% endif %}
+
+    {% if has_producer %}
+      <p class="product-specs__line"><strong>{{ section.settings.producer_title }}</strong> {{ product.metafields.custom.producer | newline_to_br }}</p>
+    {% endif %}
+
+    {% if has_country %}
+      <p class="product-specs__line"><strong>{{ section.settings.country_title }}</strong> {{ product.metafields.custom.country | newline_to_br }}</p>
+    {% endif %}
+  </div>
+
+  <style>
+    .product-specs-{{ section.id }} {
+      margin-top: {{ section.settings.margin_top }}px;
+      padding: 1rem;
+      background-color: {{ section.settings.background_color }};
+      border: 1px solid {{ section.settings.border_color }};
+    }
+
+    .product-specs-{{ section.id }} .product-specs__title {
+      margin: 0.8rem 0 0.4rem;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .product-specs-{{ section.id }} .product-specs__list {
+      margin: 0 0 0.8rem 1.2rem;
+    }
+
+    .product-specs-{{ section.id }} .product-specs__line {
+      margin: 0.5rem 0;
+    }
+  </style>
+{% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Specs",
+  "tag": "section",
+  "class": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specs_title",
+      "label": "Specs title",
+      "default": "Характеристики:"
+    },
+    {
+      "type": "text",
+      "id": "choice_title",
+      "label": "Choice advice title",
+      "default": "Съвети за избор:"
+    },
+    {
+      "type": "text",
+      "id": "care_title",
+      "label": "Care title",
+      "default": "Съвети за поддръжка:"
+    },
+    {
+      "type": "text",
+      "id": "materials_title",
+      "label": "Materials title",
+      "default": "Състав:"
+    },
+    {
+      "type": "text",
+      "id": "producer_title",
+      "label": "Producer title",
+      "default": "Производител:"
+    },
+    {
+      "type": "text",
+      "id": "country_title",
+      "label": "Country title",
+      "default": "Страна:"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#dddddd"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Top margin",
+      "default": 16,
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Specs"
+    }
+  ]
+}
+{% endschema %}
