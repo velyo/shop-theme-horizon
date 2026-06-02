@@ -48,6 +48,23 @@
     endif
   endif
 
+  # Calculate BGN conversion where this shared price snippet is rendered in EUR
+  assign bgn_conversion_rate = 1.95583
+  assign show_bgn_price = false
+  assign bgn_price = null
+  assign bgn_price_min = null
+  assign bgn_price_max = null
+
+  if cart.currency.iso_code == 'EUR'
+    assign show_bgn_price = true
+    assign bgn_price = selected_variant.price | times: bgn_conversion_rate | round
+
+    if has_volume_pricing
+      assign bgn_price_min = price_min | times: bgn_conversion_rate | round
+      assign bgn_price_max = price_max | times: bgn_conversion_rate | round
+    endif
+  endif
+
   # Determine if currency code should be shown
   assign use_currency = false
   if product.handle == product_resource.handle
@@ -70,6 +87,14 @@
     assign price_min = price_min | money
     assign price_max = price_max | money
   endif
+
+  if show_bgn_price
+    assign bgn_price = bgn_price | money_without_currency | append: ' лв.'
+    if has_volume_pricing
+      assign bgn_price_min = bgn_price_min | money_without_currency
+      assign bgn_price_max = bgn_price_max | money_without_currency
+    endif
+  endif
 -%}
 
 <div ref="priceContainer">
@@ -84,6 +109,10 @@
     <span class="price-item__group">
       <span class="visually-hidden">{{ 'content.price_range' | t }}&nbsp;</span>
       <span class="price">{{ price_min }} - {{ price_max }}</span>
+      {% if show_bgn_price %}
+        <span class="price-separator" aria-hidden="true">|</span>
+        <span class="price-bgn">{{ bgn_price_min }} - {{ bgn_price_max }} лв.</span>
+      {% endif %}
     </span>
   {% else %}
     {% comment %} Standard pricing display {% endcomment %}
@@ -96,6 +125,10 @@
       "
     >
       <span class="price">{{ price | default: '&nbsp;' }}</span>
+      {% if show_bgn_price %}
+        <span class="price-separator" aria-hidden="true">|</span>
+        <span class="price-bgn">{{ bgn_price }}</span>
+      {% endif %}
     </div>
     <div
       class="
@@ -109,6 +142,10 @@
         <span class="price-item__group">
           <span class="visually-hidden">{{ 'content.price_sale' | t }}&nbsp;</span>
           <span class="price-item--sale price">{{ price | default: '&nbsp;' }}</span>
+          {% if show_bgn_price %}
+            <span class="price-separator" aria-hidden="true">|</span>
+            <span class="price-bgn">{{ bgn_price }}</span>
+          {% endif %}
         </span>
         <span class="price-item__group">
           <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
@@ -122,6 +159,10 @@
         <span class="price-item__group">
           <span class="visually-hidden">{{ 'content.price_sale' | t }}&nbsp;</span>
           <span class="price-item--sale price">{{ price | default: '&nbsp;' }}</span>
+          {% if show_bgn_price %}
+            <span class="price-separator" aria-hidden="true">|</span>
+            <span class="price-bgn">{{ bgn_price }}</span>
+          {% endif %}
         </span>
       {% endif %}
     </div>

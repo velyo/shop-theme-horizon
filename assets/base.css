@@ -4213,3 +4213,17 @@ product-recommendations:has([data-has-recommendations='false']) {
     translate: 0px var(--atc-destination, 0px);
   }
 }
+
+/* Secondary BGN price shown next to primary product price */
+.price-separator {
+  display: inline-block;
+  margin-inline: 0.35rem;
+  opacity: 0.65;
+}
+
+.price-bgn {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
