@@ -1,6 +1,13 @@
 
 
-{% assign block_settings = block.settings %}
+{% liquid
+  assign block_settings = block.settings
+  assign signup_tags = 'newsletter'
+
+  if request.page_type == 'password' or template.name == 'password'
+    assign signup_tags = signup_tags | append: ',password-page'
+  endif
+%}
 <div
   class="email-signup-block size-style spacing-style"
   style="{% render 'size-style', settings: block_settings %}{% render 'spacing-style', settings: block_settings %}"
@@ -12,6 +19,12 @@
     </div>
   {% endif %}
   {%- form 'customer', class: 'email-signup__form spacing-style' %}
+    <input
+      type="hidden"
+      name="contact[tags]"
+      value="{{ signup_tags }}"
+    >
+
     <div
       class="email-signup__input-group {% if block_settings.integrated_button and block_settings.border_style != 'underline' %}email-signup__input-group--integrated{% endif %} {% if block_settings.border_style == 'underline' %}email-signup__input-group--underline{% endif %} {% if block_settings.border_style == 'none' %}email-signup__input-group--no-border{% endif %} {% if block_settings.display_type == 'arrow' %}email-signup__input-group--arrow{% endif %} {% if block_settings.inherit_color_scheme == false %}color-{{ block_settings.color_scheme }}{% endif %}"
       style="--border-width: {{ block_settings.border_width }}px; --border-radius: {{ block_settings.border_radius }}px;"

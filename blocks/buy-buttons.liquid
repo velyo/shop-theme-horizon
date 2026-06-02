@@ -15,9 +15,20 @@
   endif
 
   assign can_add_to_cart = false
+  assign is_sold_out = false
   assign add_to_cart_text = 'products.product.unavailable' | t
+  assign notify_tags = 'back-in-stock,notify-me'
+
+  if request.page_type == 'product' or template.name == 'product'
+    assign notify_tags = notify_tags | append: ',product-page'
+  else
+    assign notify_tags = notify_tags | append: ',non-product-page'
+  endif
 
   if variant
+    assign notify_tags = notify_tags | append: ',product-' | append: product.id
+    assign notify_tags = notify_tags | append: ',variant-' | append: variant.id
+
     if variant.quantity_rule.min > variant.inventory_quantity and inventory_managed and inventory_policy == 'deny'
       assign quantity_rule_soldout = true
     endif
@@ -27,6 +38,7 @@
       assign add_to_cart_text = 'products.product.add_to_cart' | t
     elsif inventory_managed and inventory_quantity <= 0 and inventory_policy == 'deny' or quantity_rule_soldout
       assign can_add_to_cart = false
+      assign is_sold_out = true
       assign add_to_cart_text = 'products.product.sold_out' | t
     else
       assign can_add_to_cart = false
@@ -235,6 +247,62 @@
           </span>
         {%- endif -%}
       {%- endform -%}
+
+      {% if block_settings.show_notify_when_sold_out and is_sold_out %}
+        {%- form 'customer', class: 'back-in-stock-form spacing-style' -%}
+          <input
+            type="hidden"
+            name="contact[tags]"
+            value="{{ notify_tags }}"
+          >
+
+          <input
+            type="hidden"
+            name="contact[product]"
+            value="{{ product.title | escape }}"
+          >
+
+          <input
+            type="hidden"
+            name="contact[variant]"
+            value="{{ variant.title | default: 'Default Title' | escape }}"
+          >
+
+          <label
+            class="back-in-stock-form__label"
+            for="BackInStockEmail-{{ section.id }}-{{ block.id }}"
+          >
+            Уведоми ме при наличност
+          </label>
+
+          <div class="back-in-stock-form__row">
+            <input
+              id="BackInStockEmail-{{ section.id }}-{{ block.id }}"
+              type="email"
+              name="contact[email]"
+              class="back-in-stock-form__input"
+              autocomplete="email"
+              placeholder="Имейл адрес"
+              required
+              value="{% if customer %}{{ customer.email }}{% endif %}"
+            >
+            <button
+              type="submit"
+              class="button button-secondary"
+            >
+              Уведоми ме
+            </button>
+          </div>
+
+          {% if form.posted_successfully? %}
+            <p class="back-in-stock-form__message">Благодарим! Ще ви уведомим, когато този артикул отново е наличен.</p>
+          {% endif %}
+
+          {% if form.errors %}
+            <p class="back-in-stock-form__message">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+          {% endif %}
+        {%- endform -%}
+      {% endif %}
     </product-form-component>
   {%- else -%}
     <div class="product-form-buttons">
@@ -364,6 +432,40 @@
   </local-pickup>
 {% endif %}
 
+{% style %}
+  .back-in-stock-form {
+    margin-top: var(--padding-md);
+    display: grid;
+    gap: var(--padding-xs);
+  }
+
+  .back-in-stock-form__label {
+    color: var(--color-foreground);
+  }
+
+  .back-in-stock-form__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--padding-xs);
+
+    @media screen and (min-width: 750px) {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+    }
+  }
+
+  .back-in-stock-form__input {
+    min-height: var(--minimum-touch-target);
+    width: 100%;
+    padding-inline: var(--padding-sm);
+  }
+
+  .back-in-stock-form__message {
+    margin: 0;
+    font-size: var(--font-paragraph--size);
+  }
+{% endstyle %}
+
 {% render 'buy-buttons-styles' %}
 
 {% schema %}
@@ -385,6 +487,12 @@
       "type": "checkbox",
       "id": "show_pickup_availability",
       "label": "t:settings.show_pickup_availability",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_notify_when_sold_out",
+      "label": "Show notify me form when sold out",
       "default": true
     },
     {
