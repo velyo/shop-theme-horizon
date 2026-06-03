@@ -1,0 +1,120 @@
+{%- doc -%}
+  Renders related products from a product list metafield.
+
+  @param {product} product - Current product
+{%- enddoc -%}
+
+{%- liquid
+  assign related_products = product.metafields.custom.related_products.value
+-%}
+
+{% if related_products != blank %}
+  {% capture related_products_cards %}
+    {% for related_product in related_products %}
+      {% if related_product != blank and related_product.id != product.id %}
+        {%- liquid
+          assign related_price = related_product.price | money
+          assign show_bgn_price = false
+
+          if cart.currency.iso_code == 'EUR'
+            assign show_bgn_price = true
+            assign related_bgn_price = related_product.price | times: 1.95583 | round | money_without_currency | append: ' лв.'
+          endif
+        -%}
+        <a class="related-product-card" href="{{ related_product.url }}">
+          {% if related_product.featured_image %}
+            {{
+              related_product.featured_image
+              | image_url: width: 220
+              | image_tag: alt: related_product.title, class: 'related-product-card__image', loading: 'lazy'
+            }}
+          {% endif %}
+          <div class="related-product-card__content">
+            <p class="related-product-card__title">{{ related_product.title }}</p>
+            <p class="related-product-card__price">
+              <span class="related-product-card__price-main">{{ related_price }}</span>
+              {% if show_bgn_price %}
+                <span class="related-product-card__price-separator" aria-hidden="true">|</span>
+                <span class="related-product-card__price-bgn">{{ related_bgn_price }}</span>
+              {% endif %}
+            </p>
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  {% endcapture %}
+
+  {% if related_products_cards != blank %}
+    <div class="related-product-wrap">
+      <h3 class="related-product-wrap__heading">Може да комбинирате</h3>
+      <div class="related-product-wrap__list">
+        {{ related_products_cards }}
+      </div>
+    </div>
+
+    <style>
+      .related-product-wrap {
+        margin-top: 1.25rem;
+      }
+
+      .related-product-wrap__heading {
+        margin: 0 0 0.6rem;
+        font-size: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .related-product-wrap__list {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .related-product-card {
+        display: grid;
+        grid-template-columns: 84px 1fr;
+        gap: 0.75rem;
+        align-items: center;
+        padding: 0.7rem;
+        border: 1px solid #e8e8e8;
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        background: #fff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .related-product-card:hover {
+        border-color: #d0d0d0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+
+      .related-product-card__image {
+        width: 84px;
+        height: 84px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+        background: #f5f5f5;
+      }
+
+      .related-product-card__content {
+        min-width: 0;
+      }
+
+      .related-product-card__title {
+        margin: 0;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      .related-product-card__price {
+        margin: 0.3rem 0 0;
+        font-weight: 700;
+      }
+
+      .related-product-card__price-separator {
+        margin: 0 0.35rem;
+        opacity: 0.7;
+      }
+    </style>
+  {% endif %}
+{% endif %}
