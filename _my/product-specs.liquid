@@ -1,0 +1,53 @@
+<div class="product-specs">
+  {% if product.metafields.custom.specs_text and product.metafields.custom.specs_text != '' %}
+    <b>Характеристики:</b>
+    <div class="specs-richtext">{{ product.metafields.custom.specs_text | metafield_tag }}</div>
+  {% endif %}  
+  {% if product.metafields.custom.wearing_style and product.metafields.custom.wearing_style != '' %}
+    <b>Начин на носене:</b>
+    <div class="specs-richtext">{{ product.metafields.custom.wearing_style | metafield_tag }}</div>
+  {% endif %}
+  {% if product.metafields.custom.choice_advices and product.metafields.custom.choice_advices != '' %}
+    <b>Съвети за избор:</b>
+    <div class="specs-richtext">{{ product.metafields.custom.choice_advices | metafield_tag }}</div>
+  {% endif %}
+  {% if product.metafields.custom.care_items and product.metafields.custom.care_items != '' %}
+    <b>Съвети за поддръжка:</b>
+    <div class="specs-richtext">{{ product.metafields.custom.care_items | metafield_tag }}</div>
+  {% endif %}  
+  {% if product.metafields.custom.materials and product.metafields.custom.materials != '' %}
+    <div class="materials">
+      <b>Състав:</b> {{ product.metafields.custom.materials | newline_to_br }}
+    </div>
+  {% endif %}
+  {% if product.metafields.custom.producer and product.metafields.custom.producer != '' %}
+    <div class="producer">
+      <b>Производител:</b> {{ product.metafields.custom.producer | newline_to_br }}
+    </div>
+  {% endif %}
+  {% if product.metafields.custom.country and product.metafields.custom.country != '' %}
+    <div class="country">
+      <b>Страна:</b> {{ product.metafields.custom.country | newline_to_br }}
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .product-specs {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+
+  .product-specs .specs-richtext ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-left: 1.25rem;
+  }
+
+  .product-specs .specs-richtext p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+</style>
