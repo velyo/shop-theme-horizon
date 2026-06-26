@@ -203,12 +203,21 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "color_row_group": {
+              "type": "custom-liquid",
+              "name": "Color row",
+              "settings": {
+                "custom_liquid": "{% render 'collection-color-row', product: closest.product %}"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "card-gallery",
             "product_title_4nY4eT",
-            "price_EzJzMm"
+            "price_EzJzMm",
+            "color_row_group"
           ]
         }
       },

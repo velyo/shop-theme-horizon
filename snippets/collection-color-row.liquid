@@ -1,0 +1,45 @@
+{%- doc -%}
+  Renders an inline color row (label + swatches) for product cards only when
+  the product has at least one swatch-capable option value.
+
+  @param {object} [product] - Product object; falls back to closest.product.
+{%- enddoc -%}
+
+{%- liquid
+  assign product_resource = product | default: closest.product
+  assign has_color_row = false
+
+  if product_resource
+    for product_option in product_resource.options_with_values
+      assign swatch_count = product_option.values | map: 'swatch' | compact | size
+      assign text_swatch_count = 0
+
+      for option_value in product_option.values
+        assign option_value_parts = option_value | split: '|'
+        if option_value_parts.size > 1
+          assign option_hex_candidate = option_value_parts.last | strip | remove: ' '
+          assign option_hex_length = option_hex_candidate | size
+          assign option_hex_prefix = option_hex_candidate | slice: 0, 1
+
+          if option_hex_candidate != blank and option_hex_prefix == '#'
+            if option_hex_length == 4 or option_hex_length == 7
+              assign text_swatch_count = text_swatch_count | plus: 1
+            endif
+          endif
+        endif
+      endfor
+
+      if swatch_count > 0 or text_swatch_count > 0
+        assign has_color_row = true
+        break
+      endif
+    endfor
+  endif
+-%}
+
+{%- if has_color_row -%}
+  <div style="display:flex; align-items:center; gap:8px; padding-top:6px; width:100%;">
+    <span style="white-space:nowrap;">Цвят</span>
+    {% render 'variant-swatches', product_resource: product_resource %}
+  </div>
+{%- endif -%}
