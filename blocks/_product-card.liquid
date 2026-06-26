@@ -2,10 +2,18 @@
 
 {% liquid
   assign product = closest.product
+  assign should_render_featured_color_row = false
+
+  if product != blank and request.page_type != 'collection'
+    assign should_render_featured_color_row = true
+  endif
 -%}
 
 {% capture children %}
   {% content_for 'blocks', closest.product: product %}
+  {% if should_render_featured_color_row %}
+    {% render 'collection-color-row', product: product %}
+  {% endif %}
 {% endcapture %}
 
 {% render 'product-card', children: children, product: product %}
