@@ -96,9 +96,25 @@
     {%- for product_option in product_resource.options_with_values -%}
       {%- liquid
         assign swatch_count = product_option.values | map: 'swatch' | compact | size
+        assign text_swatch_count = 0
+
+        for option_value in product_option.values
+          assign option_value_parts = option_value | split: '|'
+          if option_value_parts.size > 1
+            assign option_hex_candidate = option_value_parts.last | strip | remove: ' '
+            assign option_hex_length = option_hex_candidate | size
+            assign option_hex_prefix = option_hex_candidate | slice: 0, 1
+
+            if option_hex_candidate != blank and option_hex_prefix == '#'
+              if option_hex_length == 4 or option_hex_length == 7
+                assign text_swatch_count = text_swatch_count | plus: 1
+              endif
+            endif
+          endif
+        endfor
       -%}
 
-      {% if swatch_count == 0 %}
+      {% if swatch_count == 0 and text_swatch_count == 0 %}
         {% continue %}
       {% endif %}
 
@@ -112,6 +128,23 @@
       <fieldset class="variant-option variant-option--buttons variant-option--swatches">
         {% capture children %}
           {%- for product_option_value in product_option.values -%}
+            {% liquid
+              assign option_value_parts = product_option_value | split: '|'
+              assign option_value_label = option_value_parts.first | strip
+              assign option_value_hex = ''
+
+              if option_value_parts.size > 1
+                assign option_hex_candidate = option_value_parts.last | strip | remove: ' '
+                assign option_hex_length = option_hex_candidate | size
+                assign option_hex_prefix = option_hex_candidate | slice: 0, 1
+
+                if option_hex_candidate != blank and option_hex_prefix == '#'
+                  if option_hex_length == 4 or option_hex_length == 7
+                    assign option_value_hex = option_hex_candidate
+                  endif
+                endif
+              endif
+            %}
             {% liquid
               comment
                 Identify the most relevant variant image to show in a card-gallery, and optionally as the swatch content.
@@ -156,7 +189,7 @@
                   type="radio"
                   name="{{ product_option.name | escape }}-{{ product_resource.id }}-swatch"
                   value="{{ product_option_value | escape }}"
-                  aria-label="{{ product_option_value.name }}"
+                  aria-label="{{ option_value_label | escape }}"
                   data-input-id="{{ product_option.position }}-{{ forloop.index0 }}"
                   data-option-media-id="{{ featured_media.id }}"
                   data-option-value-id="{{ product_option_value.id }}"
@@ -171,6 +204,8 @@
                 {% render 'swatch',
                   swatch: product_option_value.swatch,
                   variant_image: featured_media,
+                  fallback_color: option_value_hex,
+                  label: option_value_label
                 %}
                 {% render 'strikethrough-variant', product_option: product_option_value %}
               </label>
