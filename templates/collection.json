@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "section": {
       "type": "section",
@@ -105,6 +106,7 @@
           "static": true,
           "settings": {
             "enable_filtering": true,
+            "show_filters_header": true,
             "filter_style": "horizontal",
             "filter_width": "centered",
             "text_label_case": "default",
@@ -212,10 +214,16 @@
       },
       "settings": {
         "layout_type": "grid",
-        "product_card_size": "medium",
+        "product_card_size": "large",
         "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
         "product_grid_width": "centered",
         "full_width_on_mobile": true,
+        "enable_left_menu": true,
+        "left_menu": "clothes-menu",
+        "left_menu_title": "Дрехи",
+        "left_menu_sticky": true,
         "columns_gap_horizontal": 16,
         "columns_gap_vertical": 24,
         "padding-inline-start": 0,
