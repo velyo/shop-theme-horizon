@@ -5,6 +5,7 @@
 
   @param {object} product_resource - The product object, which contains variants and options.
   @param {boolean} [has_option_selected] - Whether to render the swatches in a pre-selected state.
+  @param {boolean} [inline_labels] - Whether to render option labels inline (e.g. "Цвят ... | Принт ...").
 
   @example
   {% render 'variant-swatches', product_resource: product %}
@@ -68,6 +69,66 @@
   .hidden-swatches__count:hover {
     color: var(--color-foreground-rgb);
   }
+
+  swatches-variant-picker-component.variant-swatches--inline-labels {
+    width: 100%;
+    justify-content: flex-start;
+    --variant-picker-swatch-width: 18px;
+    --variant-picker-swatch-height: 18px;
+  }
+
+  swatches-variant-picker-component.variant-swatches--inline-labels form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: var(--gap-sm);
+    row-gap: var(--gap-2xs);
+  }
+
+  swatches-variant-picker-component.variant-swatches--inline-labels .variant-option--inline-color-row {
+    display: flex;
+    align-items: center;
+    flex: 0 1 auto;
+    gap: var(--gap-2xs);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-inline-size: 0;
+  }
+
+  swatches-variant-picker-component.variant-swatches--inline-labels .variant-option--inline-color-row.variant-option--inline-next {
+    border-inline-start: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-20-30));
+  }
+
+  swatches-variant-picker-component.variant-swatches--inline-labels .variant-option__inline-option-label {
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
+
+  swatches-variant-picker-component.variant-swatches--inline-labels .variant-option__swatch-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: calc(var(--gap-2xs) + 1px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  swatches-variant-picker-component.variant-swatches--inline-labels .variant-option__swatch {
+    margin: 0;
+    padding: 0;
+  }
+
+  swatches-variant-picker-component.variant-swatches--inline-labels .variant-option__swatch-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  swatches-variant-picker-component.variant-swatches--inline-labels overflow-list::part(list) {
+    gap: calc(var(--gap-2xs) + 2px);
+  }
 {% endstylesheet %}
 
 {% liquid
@@ -79,9 +140,17 @@
   if product_resource.selected_variant or has_option_selected
     assign allow_preselection = true
   endif
+
+  assign inline_labels_enabled = false
+  if inline_labels
+    assign inline_labels_enabled = true
+  endif
 %}
 
 <swatches-variant-picker-component
+  {% if inline_labels_enabled %}
+    class="variant-swatches--inline-labels"
+  {% endif %}
   data-product-id="{{ product_resource.id }}"
   data-product-url="{{ product_resource.url }}"
   ref="swatchesVariantPicker"
@@ -123,11 +192,100 @@
         # Use product_option.position which is the actual position among ALL options
         assign swatch_option_position = product_option.position
         assign swatch_option_key = 'option' | append: swatch_option_position
+
+        assign product_option_name_normalized = product_option.name | downcase | strip
+        assign product_option_label = product_option.name
+
+        case product_option_name_normalized
+          when 'color', 'colour'
+            assign product_option_label = 'Цвят'
+          when 'print'
+            assign product_option_label = 'Принт'
+        endcase
       -%}
 
-      <fieldset class="variant-option variant-option--buttons variant-option--swatches">
-        {% capture children %}
-          {%- for product_option_value in product_option.values -%}
+      <fieldset class="variant-option variant-option--buttons variant-option--swatches{% if inline_labels_enabled %} variant-option--inline-color-row{% endif %}{% if inline_labels_enabled and forloop.first == false %} variant-option--inline-next{% endif %}">
+        {% if inline_labels_enabled %}
+          <span class="variant-option__inline-option-label">{{ product_option_label | escape }}</span>
+        {% endif %}
+        {% if inline_labels_enabled %}
+          <ul class="variant-option__swatch-list" role="list">
+            {%- for product_option_value in product_option.values -%}
+              {% liquid
+                assign option_value_parts = product_option_value | split: '|'
+                assign option_value_label = option_value_parts.first | strip
+                assign option_value_hex = ''
+
+                if option_value_parts.size > 1
+                  assign option_hex_candidate = option_value_parts.last | strip | remove: ' '
+                  assign option_hex_length = option_hex_candidate | size
+                  assign option_hex_prefix = option_hex_candidate | slice: 0, 1
+
+                  if option_hex_candidate != blank and option_hex_prefix == '#'
+                    if option_hex_length == 4 or option_hex_length == 7
+                      assign option_value_hex = option_hex_candidate
+                    endif
+                  endif
+                endif
+              %}
+              {% liquid
+                comment
+                  Identify the most relevant variant image to show in a card-gallery, and optionally as the swatch content.
+                endcomment
+
+                assign first_available_variant = nil
+                assign featured_media = product_option_value.variant.featured_media
+                assign child_product = nil
+
+                if featured_media == blank
+                  if product_option_value.product_url
+                    assign child_product = product_option_value.variant.product
+                  endif
+
+                  if child_product
+                    assign featured_media = child_product.featured_media
+                  elsif product_option_value.variant == blank
+                    for variant in product_resource.variants
+                      if variant.available and variant[swatch_option_key] == product_option_value.name and variant.featured_media
+                        assign featured_media = variant.featured_media
+                        assign first_available_variant = variant
+                        break
+                      endif
+                    endfor
+                  endif
+                endif
+
+                assign selected_variant_id = first_available_variant.id | default: product_option_value.variant.id
+                assign swatch_target_url = product_option_value.product_url | default: product_resource.url
+
+                if selected_variant_id
+                  if swatch_target_url contains '?'
+                    assign swatch_target_url = swatch_target_url | append: '&variant=' | append: selected_variant_id
+                  else
+                    assign swatch_target_url = swatch_target_url | append: '?variant=' | append: selected_variant_id
+                  endif
+                endif
+              %}
+
+              <li class="variant-option__swatch">
+                <a
+                  href="{{ swatch_target_url }}"
+                  class="variant-option__swatch-link"
+                  aria-label="{{ option_value_label | escape }}"
+                >
+                  {% render 'swatch',
+                    swatch: product_option_value.swatch,
+                    variant_image: featured_media,
+                    fallback_color: option_value_hex,
+                    label: option_value_label
+                  %}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {% else %}
+          {% capture children %}
+            {%- for product_option_value in product_option.values -%}
             {% liquid
               assign option_value_parts = product_option_value | split: '|'
               assign option_value_label = option_value_parts.first | strip
@@ -156,6 +314,7 @@
                 resolving `product_option_value.variant.product` multiple times.
               endcomment
 
+              assign first_available_variant = nil
               assign featured_media = product_option_value.variant.featured_media
               assign child_product = nil
 
@@ -210,19 +369,20 @@
                 {% render 'strikethrough-variant', product_option: product_option_value %}
               </label>
             </li>
-          {%- endfor -%}
-          <li
-            slot="more"
-          >
-            <button
-              class="hidden-swatches__count"
-              aria-label="{{ 'actions.show_all_options' | t }}"
-              on:click="/showAllSwatches"
-            ></button>
-          </li>
-        {% endcapture %}
+            {%- endfor -%}
+            <li
+              slot="more"
+            >
+              <button
+                class="hidden-swatches__count"
+                aria-label="{{ 'actions.show_all_options' | t }}"
+                on:click="/showAllSwatches"
+              ></button>
+            </li>
+          {% endcapture %}
 
-        {% render 'overflow-list', children: children, ref: 'overflowList' %}
+          {% render 'overflow-list', children: children, ref: 'overflowList' %}
+        {% endif %}
       </fieldset>
     {%- endfor -%}
     <script type="application/json">

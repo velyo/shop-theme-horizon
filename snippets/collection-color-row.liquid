@@ -38,8 +38,7 @@
 -%}
 
 {%- if has_color_row -%}
-  <div style="display:flex; align-items:center; gap:8px; padding-top:6px; width:100%;">
-    <span style="white-space:nowrap;">Цвят</span>
-    {% render 'variant-swatches', product_resource: product_resource %}
+  <div style="padding-top:6px; width:100%;">
+    {% render 'variant-swatches', product_resource: product_resource, inline_labels: true %}
   </div>
 {%- endif -%}
