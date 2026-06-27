@@ -15,21 +15,7 @@
     <b>Съвети за поддръжка:</b>
     <div class="specs-richtext">{{ product.metafields.custom.care_items | metafield_tag }}</div>
   {% endif %}  
-  {% if product.metafields.custom.materials and product.metafields.custom.materials != '' %}
-    <div class="materials">
-      <b>Състав:</b> {{ product.metafields.custom.materials | newline_to_br }}
-    </div>
-  {% endif %}
-  {% if product.metafields.custom.producer and product.metafields.custom.producer != '' %}
-    <div class="producer">
-      <b>Производител:</b> {{ product.metafields.custom.producer | newline_to_br }}
-    </div>
-  {% endif %}
-  {% if product.metafields.custom.country and product.metafields.custom.country != '' %}
-    <div class="country">
-      <b>Страна:</b> {{ product.metafields.custom.country | newline_to_br }}
-    </div>
-  {% endif %}
+  {% render 'product-specs-origin', product: product %}
 </div>
 
 <style>

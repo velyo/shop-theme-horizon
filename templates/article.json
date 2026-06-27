@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "section": {
       "type": "main-blog-post",
@@ -21,7 +22,7 @@
             "max_width": "normal",
             "alignment": "center",
             "type_preset": "h2",
-            "font": "var(--font-primary--family)",
+            "font": "var(--font-heading--family)",
             "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
@@ -54,11 +55,10 @@
           "blocks": {}
         },
         "blog-post-image": {
-          "type": "image",
-          "name": "Featured image",
+          "type": "_blog-post-featured-image",
           "static": true,
           "settings": {
-            "image_ratio": "landscape",
+            "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -82,10 +82,21 @@
           "blocks": {}
         }
       },
+      "custom_css": [
+        ".rte {max-width: 760px; margin: auto; color: #3f342f; font: 16px/1.8 Inter, sans-serif;}",
+        ".rte h1,.rte h2,.rte h3 {font-family: \"Cormorant Garamond\", serif; color: #2b201c; line-height: 1.15;}",
+        ".rte h1 {font-size: 42px;}",
+        ".rte h2 {font-size: 30px;}",
+        ".rte h3 {font-size: 22px;}",
+        ".rte a {color: #a67c6b; text-decoration: none;}",
+        ".rte p,.rte li {margin-bottom: 14px;}",
+        ".rte img {border-radius: 18px;}",
+        ".rte blockquote {border-left: 3px solid #a67c6b; padding-left: 16px; color: #7d6b63;}"
+      ],
       "settings": {
         "content_direction": "column",
         "gap": 32,
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "padding-block-start": 40,
         "padding-block-end": 80
       }
