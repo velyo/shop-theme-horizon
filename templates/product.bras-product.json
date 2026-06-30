@@ -270,11 +270,19 @@
                             },
                             "blocks": {}
                         },
+                        "custom_liquid_specs_origin_after_desc": {
+                            "type": "custom-liquid",
+                            "name": "Specs origin",
+                            "settings": {
+                                "custom_liquid": "{% render 'product-specs-origin', product: product %}"
+                            },
+                            "blocks": {}
+                        },
                         "custom_liquid_NVaRBg": {
                             "type": "custom-liquid",
                             "name": "Спецификация",
                             "settings": {
-                                "custom_liquid": "<div class=\"product-specs\">\n  {% if product.metafields.custom.specs_text and product.metafields.custom.specs_text != '' %}\n    <b>Характеристики:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.specs_text | metafield_tag }}</div>\n  {% endif %}  \n  {% if product.metafields.custom.wearing_style and product.metafields.custom.wearing_style != '' %}\n    <b>Начин на носене:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.wearing_style | metafield_tag }}</div>\n  {% endif %}\n  {% if product.metafields.custom.choice_advices and product.metafields.custom.choice_advices != '' %}\n    <b>Съвети за избор:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.choice_advices | metafield_tag }}</div>\n  {% endif %}\n  {% if product.metafields.custom.care_items and product.metafields.custom.care_items != '' %}\n    <b>Съвети за поддръжка:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.care_items | metafield_tag }}</div>\n  {% endif %}  \n  {% render 'product-specs-origin', product: product %}\n</div>\n\n<style>\n  .product-specs {\n    margin-top: 1rem;\n    padding: 1rem;\n    background-color: #f9f9f9;\n    border: 1px solid #ddd;\n  }\n\n  .product-specs .specs-richtext ul {\n    margin-top: 0.5rem;\n    margin-bottom: 0.75rem;\n    padding-left: 1.25rem;\n  }\n\n  .product-specs .specs-richtext p {\n    margin-top: 0.5rem;\n    margin-bottom: 0.75rem;\n  }\n</style>"
+                                "custom_liquid": "<div class=\"product-specs\">\n  {% if product.metafields.custom.specs_text and product.metafields.custom.specs_text != '' %}\n    <b>Характеристики:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.specs_text | metafield_tag }}</div>\n  {% endif %}  \n  {% if product.metafields.custom.wearing_style and product.metafields.custom.wearing_style != '' %}\n    <b>Начин на носене:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.wearing_style | metafield_tag }}</div>\n  {% endif %}\n  {% if product.metafields.custom.choice_advices and product.metafields.custom.choice_advices != '' %}\n    <b>Съвети за избор:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.choice_advices | metafield_tag }}</div>\n  {% endif %}\n  {% if product.metafields.custom.care_items and product.metafields.custom.care_items != '' %}\n    <b>Съвети за поддръжка:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.care_items | metafield_tag }}</div>\n  {% endif %}  \n</div>\n\n<style>\n  .product-specs {\n    margin-top: 1rem;\n    padding: 1rem;\n    background-color: #f9f9f9;\n    border: 1px solid #ddd;\n  }\n\n  .product-specs .specs-richtext ul {\n    margin-top: 0.5rem;\n    margin-bottom: 0.75rem;\n    padding-left: 1.25rem;\n  }\n\n  .product-specs .specs-richtext p {\n    margin-top: 0.5rem;\n    margin-bottom: 0.75rem;\n  }\n</style>"
                             },
                             "blocks": {}
                         },
@@ -476,8 +484,9 @@
                         "variant_picker_R3rGDr",
                         "buy_buttons_eYQEYi",
                         "text_aEtTtq",
-                        "text_why_to_like_metafield",
+                        "custom_liquid_specs_origin_after_desc",
                         "custom_liquid_NVaRBg",
+                        "text_why_to_like_metafield",
                         "custom_liquid_AjaUwY",
                         "custom_liquid_XaLk66",
                         "image_d8Lbwn",
