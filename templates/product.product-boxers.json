@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
     "sections": {
         "main": {
@@ -270,19 +279,11 @@
                             },
                             "blocks": {}
                         },
-                        "custom_liquid_specs_origin_after_desc": {
-                            "type": "custom-liquid",
-                            "name": "Specs origin",
-                            "settings": {
-                                "custom_liquid": "{% render 'product-specs-origin', product: product %}"
-                            },
-                            "blocks": {}
-                        },
                         "custom_liquid_pPFzPE": {
                             "type": "custom-liquid",
                             "name": "Спецификация",
                             "settings": {
-                                "custom_liquid": "<div class=\"product-specs\">\n  {% if product.metafields.custom.specs_text and product.metafields.custom.specs_text != '' %}\n    <b>Характеристики:</b>\n    <ul>\n      {% assign text_values = product.metafields.custom.specs_text | split: '\"value\":\"' %}\n      {% for value in text_values %}\n        {% if forloop.index > 1 %}\n          {% capture item %}{{ value | split: '\"' | first }}{% endcapture %}\n          {% if item != '' %}\n            <li>{{ item }}</li>\n          {% endif %}\n        {% endif %}\n      {% endfor %}\n    </ul>\n  {% endif %}  \n  {% if product.metafields.custom.care_items and product.metafields.custom.care_items != '' %}\n    <b>Съвети за поддръжка:</b>\n    <ul>\n      {% assign text_values = product.metafields.custom.care_items | split: '\"value\":\"' %}\n      {% for value in text_values %}\n        {% if forloop.index > 1 %}\n          {% capture item %}{{ value | split: '\"' | first }}{% endcapture %}\n          {% if item != '' %}\n            <li>{{ item }}</li>\n          {% endif %}\n        {% endif %}\n      {% endfor %}\n    </ul>\n  {% endif %}\n  {% if product.metafields.custom.choice_advices and product.metafields.custom.choice_advices != '' %}\n    <b>Съвети за избор:</b>\n    <ul>\n      {% assign text_values = product.metafields.custom.choice_advices | split: '\"value\":\"' %}\n      {% for value in text_values %}\n        {% if forloop.index > 1 %}\n          {% capture item %}{{ value | split: '\"' | first }}{% endcapture %}\n          {% if item != '' %}\n            <li>{{ item }}</li>\n          {% endif %}\n        {% endif %}\n      {% endfor %}\n    </ul>\n  {% endif %}\n</div>\n\n<style>\n  .product-specs {\n    margin-top: 1rem;\n    padding: 1rem;\n    background-color: #f9f9f9;\n    border: 1px solid #ddd;\n  }\n</style>"
+                                "custom_liquid": "<div class=\"product-specs\">\n  {% if product.metafields.custom.specs_text and product.metafields.custom.specs_text != '' %}\n    <b>Характеристики:</b>\n    <ul>\n      {% assign text_values = product.metafields.custom.specs_text | split: '\"value\":\"' %}\n      {% for value in text_values %}\n        {% if forloop.index > 1 %}\n          {% capture item %}{{ value | split: '\"' | first }}{% endcapture %}\n          {% if item != '' %}\n            <li>{{ item }}</li>\n          {% endif %}\n        {% endif %}\n      {% endfor %}\n    </ul>\n  {% endif %}  \n  {% if product.metafields.custom.care_items and product.metafields.custom.care_items != '' %}\n    <b>Съвети за поддръжка:</b>\n    <ul>\n      {% assign text_values = product.metafields.custom.care_items | split: '\"value\":\"' %}\n      {% for value in text_values %}\n        {% if forloop.index > 1 %}\n          {% capture item %}{{ value | split: '\"' | first }}{% endcapture %}\n          {% if item != '' %}\n            <li>{{ item }}</li>\n          {% endif %}\n        {% endif %}\n      {% endfor %}\n    </ul>\n  {% endif %}\n  {% if product.metafields.custom.choice_advices and product.metafields.custom.choice_advices != '' %}\n    <b>Съвети за избор:</b>\n    <ul>\n      {% assign text_values = product.metafields.custom.choice_advices | split: '\"value\":\"' %}\n      {% for value in text_values %}\n        {% if forloop.index > 1 %}\n          {% capture item %}{{ value | split: '\"' | first }}{% endcapture %}\n          {% if item != '' %}\n            <li>{{ item }}</li>\n          {% endif %}\n        {% endif %}\n      {% endfor %}\n    </ul>\n  {% endif %}\n  {% if product.metafields.custom.materials and product.metafields.custom.materials != '' %}\n    <div class=\"materials\">\n      <b>Състав:</b> {{ product.metafields.custom.materials | newline_to_br }}\n    </div>\n  {% endif %}\n  {% if product.metafields.custom.producer and product.metafields.custom.producer != '' %}\n    <div class=\"producer\">\n      <b>Производител:</b> {{ product.metafields.custom.producer | newline_to_br }}\n    </div>\n  {% endif %}\n  {% if product.metafields.custom.country and product.metafields.custom.country != '' %}\n    <div class=\"country\">\n      <b>Страна:</b> {{ product.metafields.custom.country | newline_to_br }}\n    </div>\n  {% endif %}\n</div>\n\n<style>\n  .product-specs {\n    margin-top: 1rem;\n    padding: 1rem;\n    background-color: #f9f9f9;\n    border: 1px solid #ddd;\n  }\n</style>"
                             },
                             "blocks": {}
                         },
@@ -460,7 +461,6 @@
                         "variant_picker_R3rGDr",
                         "buy_buttons_eYQEYi",
                         "text_aEtTtq",
-                        "custom_liquid_specs_origin_after_desc",
                         "text_why_to_like_metafield",
                         "custom_liquid_pPFzPE",
                         "custom_liquid_zb3fz9",
