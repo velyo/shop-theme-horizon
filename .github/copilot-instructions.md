@@ -4,6 +4,13 @@
 - Follow these instructions for all changes in this workspace.
 - Prefer minimal, targeted edits that preserve existing behavior and naming.
 
+## Session Start Sync Policy
+- At the start of each new coding session, run a single theme sync before edits:
+  - `shopify theme pull --theme 199280329034`
+- After that initial sync, do not auto-sync again in the same session unless explicitly requested.
+- If sync fails, stop and report the exact error and a short next-step suggestion.
+- After each completed change, report the list of modified files.
+
 ## Project Context
 - This is a Shopify theme using Liquid templates and modular JavaScript in assets.
 - JavaScript uses strict type checking via JSDoc and jsconfig settings in assets/jsconfig.json.
