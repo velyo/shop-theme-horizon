@@ -1,6 +1,6 @@
 {% if product.metafields.custom.materials and product.metafields.custom.materials != '' %}
   <div class="materials">
-    <b>Състав:</b> {{ product.metafields.custom.materials | newline_to_br }}
+    <b>Состав:</b> {{ product.metafields.custom.materials | newline_to_br }}
   </div>
 {% endif %}
 {% if product.metafields.custom.producer and product.metafields.custom.producer != '' %}
@@ -13,3 +13,38 @@
     <b>Произход:</b> {{ product.metafields.custom.country | newline_to_br }}
   </div>
 {% endif %}
+{% assign has_length = product.metafields.custom.length %}
+{% assign has_width = product.metafields.custom.width %}
+{% assign has_height = product.metafields.custom.height %}
+{% if has_length != blank or has_width != blank or has_height != blank %}
+  <h4 class="specs-dimensions-heading">Размери</h4>
+{% endif %}
+{% if product.metafields.custom.length and product.metafields.custom.length != '' %}
+  <div class="length">
+    <b>Дължина:</b> {{ product.metafields.custom.length | newline_to_br }} см
+  </div>
+{% endif %}
+{% if product.metafields.custom.width and product.metafields.custom.width != '' %}
+  <div class="width">
+    <b>Ширина:</b> {{ product.metafields.custom.width | newline_to_br }} см
+  </div>
+{% endif %}
+{% if product.metafields.custom.height and product.metafields.custom.height != '' %}
+  <div class="height">
+    <b>Височина:</b> {{ product.metafields.custom.height | newline_to_br }} см
+  </div>
+{% endif %}
+
+<style>
+  .specs-dimensions-heading {
+    font-size: 0.875rem;
+    margin: 0.5rem 0 0.3rem 0;
+    font-weight: 600;
+  }
+
+  .length,
+  .width,
+  .height {
+    padding-left: 1rem;
+  }
+</style>
