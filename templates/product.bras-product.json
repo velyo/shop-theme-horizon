@@ -1,530 +1,387 @@
 {
-    "sections": {
-        "main": {
-            "type": "product-information",
-            "blocks": {
-                "media-gallery": {
-                    "type": "_product-media-gallery",
-                    "static": true,
-                    "settings": {
-                        "media_presentation": "grid",
-                        "media_columns": "two",
-                        "image_gap": 4,
-                        "large_first_image": false,
-                        "icons_style": "chevron_large",
-                        "slideshow_controls_style": "dots",
-                        "slideshow_mobile_controls_style": "dots",
-                        "thumbnail_position": "right",
-                        "thumbnail_width": 44,
-                        "thumbnail_radius": 0,
-                        "aspect_ratio": "adapt",
-                        "constrain_to_viewport": true,
-                        "media_fit": "contain",
-                        "media_radius": 0,
-                        "extend_media": false,
-                        "zoom": true,
-                        "video_loop": false,
-                        "hide_variants": true,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                    },
-                    "blocks": {}
-                },
-                "product-details": {
-                    "type": "_product-details",
-                    "static": true,
-                    "settings": {
-                        "width": "fill",
-                        "custom_width": 100,
-                        "width_mobile": "fill",
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "details_position": "flex-start",
-                        "gap": 28,
-                        "sticky_details_desktop": true,
-                        "inherit_color_scheme": true,
-                        "color_scheme": "scheme-1",
-                        "background_media": "none",
-                        "video_position": "cover",
-                        "background_image_position": "cover",
-                        "border": "none",
-                        "border_width": 1,
-                        "border_opacity": 100,
-                        "border_radius": 0,
-                        "padding-block-start": 24,
-                        "padding-block-end": 24,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                    },
-                    "blocks": {
-                        "group_icgrde": {
-                            "type": "group",
-                            "name": "Header",
-                            "settings": {
-                                "content_direction": "column",
-                                "vertical_on_mobile": true,
-                                "horizontal_alignment": "flex-start",
-                                "vertical_alignment": "center",
-                                "align_baseline": false,
-                                "horizontal_alignment_flex_direction_column": "flex-start",
-                                "vertical_alignment_flex_direction_column": "center",
-                                "gap": 12,
-                                "width": "fill",
-                                "custom_width": 100,
-                                "width_mobile": "fill",
-                                "custom_width_mobile": 100,
-                                "height": "fit",
-                                "custom_height": 100,
-                                "inherit_color_scheme": true,
-                                "color_scheme": "",
-                                "background_media": "none",
-                                "video_position": "cover",
-                                "background_image_position": "cover",
-                                "border": "none",
-                                "border_width": 1,
-                                "border_opacity": 100,
-                                "border_radius": 0,
-                                "toggle_overlay": false,
-                                "overlay_color": "#00000026",
-                                "overlay_style": "solid",
-                                "gradient_direction": "to top",
-                                "link": "",
-                                "open_in_new_tab": false,
-                                "placeholder": "",
-                                "padding-block-start": 0,
-                                "padding-block-end": 0,
-                                "padding-inline-start": 0,
-                                "padding-inline-end": 0
-                            },
-                            "blocks": {
-                                "text_xrnftG": {
-                                    "type": "text",
-                                    "name": "Product title",
-                                    "settings": {
-                                        "text": "<h1>{{ closest.product.title }}</h1>",
-                                        "width": "100%",
-                                        "max_width": "normal",
-                                        "alignment": "left",
-                                        "type_preset": "h3",
-                                        "font": "var(--font-primary--family)",
-                                        "font_size": "",
-                                        "line_height": "normal",
-                                        "letter_spacing": "normal",
-                                        "case": "none",
-                                        "wrap": "pretty",
-                                        "color": "",
-                                        "background": false,
-                                        "background_color": "#00000026",
-                                        "corner_radius": 0,
-                                        "padding-block-start": 0,
-                                        "padding-block-end": 0,
-                                        "padding-inline-start": 0,
-                                        "padding-inline-end": 0
-                                    },
-                                    "blocks": {}
-                                },
-                                "custom_liquid_kchNA7": {
-                                    "type": "custom-liquid",
-                                    "name": "Серия",
-                                    "settings": {
-                                        "custom_liquid": "{% if product.metafields.custom.serie and product.metafields.custom.serie != \"\" %} \n<div class='product-serie'>\n<b>Серия:</b> {{ product.metafields.custom.serie }}\n</div>\n{% endif %}\n\n<style>\n.product-serie { \n  font-size: 14px; \n  color:#666; \n  margin-top:6px; \n}\n</style>"
-                                    },
-                                    "blocks": {}
-                                },
-                                "sku_NDWVfE": {
-                                    "type": "sku",
-                                    "name": "t:names.product_sku",
-                                    "settings": {
-                                        "type_preset": "custom",
-                                        "width": "100%",
-                                        "alignment": "left",
-                                        "font": "var(--font-body--family)",
-                                        "font_size": "1rem",
-                                        "line_height": "normal",
-                                        "letter_spacing": "normal",
-                                        "case": "none",
-                                        "color": "var(--color-foreground)",
-                                        "padding-block-start": 0,
-                                        "padding-block-end": 0,
-                                        "padding-inline-start": 0,
-                                        "padding-inline-end": 0
-                                    },
-                                    "blocks": {}
-                                },
-                                "price_tVjtKg": {
-                                    "type": "price",
-                                    "settings": {
-                                        "show_sale_price_first": true,
-                                        "show_installments": true,
-                                        "show_tax_info": true,
-                                        "type_preset": "custom",
-                                        "width": "100%",
-                                        "alignment": "left",
-                                        "font": "var(--font-body--family)",
-                                        "font_size": "1.125rem",
-                                        "line_height": "normal",
-                                        "letter_spacing": "normal",
-                                        "case": "none",
-                                        "color": "var(--color-foreground)",
-                                        "padding-block-start": 4,
-                                        "padding-block-end": 0,
-                                        "padding-inline-start": 0,
-                                        "padding-inline-end": 0
-                                    },
-                                    "blocks": {}
-                                }
-                            },
-                            "block_order": [
-                                "text_xrnftG",
-                                "custom_liquid_kchNA7",
-                                "sku_NDWVfE",
-                                "price_tVjtKg"
-                            ]
-                        },
-                        "divider_VJhene": {
-                            "type": "_divider",
-                            "name": "t:names.divider",
-                            "settings": {
-                                "thickness": 1,
-                                "corner_radius": "square",
-                                "width_percent": 100,
-                                "padding-block-start": 0,
-                                "padding-block-end": 0
-                            },
-                            "blocks": {}
-                        },
-                        "variant_picker_R3rGDr": {
-                            "type": "variant-picker",
-                            "settings": {
-                                "variant_style": "buttons",
-                                "show_swatches": true,
-                                "alignment": "left",
-                                "padding-block-start": 0,
-                                "padding-block-end": 0,
-                                "padding-inline-start": 0,
-                                "padding-inline-end": 0
-                            },
-                            "blocks": {}
-                        },
-                        "buy_buttons_eYQEYi": {
-                            "type": "buy-buttons",
-                            "settings": {
-                                "stacking": true,
-                                "show_pickup_availability": true,
-                                "show_notify_when_sold_out": true,
-                                "gift_card_form": true,
-                                "padding-block-start": 0,
-                                "padding-block-end": 0,
-                                "padding-inline-start": 0,
-                                "padding-inline-end": 0
-                            },
-                            "blocks": {
-                                "quantity": {
-                                    "type": "quantity",
-                                    "static": true,
-                                    "settings": {},
-                                    "blocks": {}
-                                },
-                                "add-to-cart": {
-                                    "type": "add-to-cart",
-                                    "static": true,
-                                    "settings": {
-                                        "style_class": "button"
-                                    },
-                                    "blocks": {}
-                                },
-                                "accelerated-checkout": {
-                                    "type": "accelerated-checkout",
-                                    "static": true,
-                                    "settings": {},
-                                    "blocks": {}
-                                }
-                            },
-                            "block_order": []
-                        },
-                        "text_aEtTtq": {
-                            "type": "text",
-                            "name": "Product description",
-                            "settings": {
-                                "text": "{{ closest.product.description }}<p></p>",
-                                "width": "100%",
-                                "max_width": "normal",
-                                "alignment": "left",
-                                "type_preset": "custom",
-                                "font": "var(--font-primary--family)",
-                                "font_size": "",
-                                "line_height": "normal",
-                                "letter_spacing": "normal",
-                                "case": "none",
-                                "wrap": "pretty",
-                                "color": "",
-                                "background": false,
-                                "background_color": "#00000026",
-                                "corner_radius": 0,
-                                "padding-block-start": 0,
-                                "padding-block-end": 0,
-                                "padding-inline-start": 0,
-                                "padding-inline-end": 0
-                            },
-                            "blocks": {}
-                        },
-                        "custom_liquid_specs_origin_after_desc": {
-                            "type": "custom-liquid",
-                            "name": "Specs origin",
-                            "settings": {
-                                "custom_liquid": "{% render 'product-specs-origin', product: product %}"
-                            },
-                            "blocks": {}
-                        },
-                        "custom_liquid_NVaRBg": {
-                            "type": "custom-liquid",
-                            "name": "Спецификация",
-                            "settings": {
-                                "custom_liquid": "<div class=\"product-specs\">\n  {% if product.metafields.custom.specs_text and product.metafields.custom.specs_text != '' %}\n    <b>Характеристики:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.specs_text | metafield_tag }}</div>\n  {% endif %}  \n  {% if product.metafields.custom.wearing_style and product.metafields.custom.wearing_style != '' %}\n    <b>Начин на носене:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.wearing_style | metafield_tag }}</div>\n  {% endif %}\n  {% if product.metafields.custom.choice_advices and product.metafields.custom.choice_advices != '' %}\n    <b>Съвети за избор:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.choice_advices | metafield_tag }}</div>\n  {% endif %}\n  {% if product.metafields.custom.care_items and product.metafields.custom.care_items != '' %}\n    <b>Съвети за поддръжка:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.care_items | metafield_tag }}</div>\n  {% endif %}  \n</div>\n\n<style>\n  .product-specs {\n    margin-top: 1rem;\n    padding: 1rem;\n    background-color: #f9f9f9;\n    border: 1px solid #ddd;\n  }\n\n  .product-specs .specs-richtext ul {\n    margin-top: 0.5rem;\n    margin-bottom: 0.75rem;\n    padding-left: 1.25rem;\n  }\n\n  .product-specs .specs-richtext p {\n    margin-top: 0.5rem;\n    margin-bottom: 0.75rem;\n  }\n</style>"
-                            },
-                            "blocks": {}
-                        },
-                        "custom_liquid_AjaUwY": {
-                            "type": "custom-liquid",
-                            "name": "Linked Products",
-                            "settings": {
-                                "custom_liquid": "{% render 'related-products', product: closest.product %}"
-                            },
-                            "blocks": {}
-                        },
-                        "custom_liquid_XaLk66": {
-                            "type": "custom-liquid",
-                            "name": "Size calculator",
-                            "settings": {
-                                "custom_liquid": "<style>\n.bra-calculator { max-width:680px; padding:16px; border:1px solid #e4e4e4; background:#fff; border-radius:8px; font-family:inherit; }\n.bra-calculator h3 { margin:0 0 12px; font-size:18px; display:flex; align-items:center; }\n.bra-calculator .tips-toggle { margin-left:0; margin-top:8px; font-size:13px; color:#0073e6; cursor:pointer; text-decoration:underline; display:block; }\n.bra-calculator .grid { display:flex; gap:0px; flex-wrap:wrap; margin-bottom:12px; }\n.bra-calculator .field { flex:0 1 auto; }\n.bra-calculator label { display:block; font-size:13px; margin-bottom:6px; color:#333; }\n.bra-calculator input[type=\"number\"] { width:100%; padding:6px 8px; border:1px solid #ccc; border-radius:6px; font-size:14px; line-height:1; height:32px; }\n.bra-calculator .actions { display:flex; gap:8px; align-items:center; margin-bottom:12px; }\n.bra-calculator button { background:#111; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; }\n.bra-calculator .result { padding:12px; border-radius:6px; background:#f7f9fb; border:1px solid #e6eef6; color:#062; font-weight:600; display:none; }\n.bra-calculator .note { margin-top:8px; font-size:13px; color:#666; }\n.bra-calculator .tips { margin:12px 0; margin-bottom:6px;padding:12px; background:#fcfcfd; border:1px solid #eef3fb; border-radius:6px; display:none; font-size:14px; color:#222; }\n.bra-calculator .tips ul { margin:8px 0 0 1.1em; }\n@media (max-width:520px){ .bra-calculator .grid { flex-direction:column; } .bra-calculator .tips-toggle { display:block; margin-top:8px; } }\n</style>\n\n<div class=\"bra-calculator\" id=\"braCalc\">\n  <h3>Калкулатор за размер сутиен (EU)</h3>\n\n  <div>\n    <span class=\"tips-toggle\" id=\"toggleBraTips\">Съвети за измерване ▾</span>\n  </div>\n\n  <div class=\"tips\" id=\"braTips\" aria-hidden=\"true\">\n    <strong>Съвети при измерване</strong>\n    <ul>\n      <li><strong>Обиколка под гърдите:</strong> измерете точно под гърдите, хоризонтално, с плътна но не притискаща лента.</li>\n      <li><strong>Обиколка на гърдите:</strong> измерете най‑пълната част на гърдите, хоризонтално.</li>\n      <li>Ако сте между два размера на лентата, изберете по‑голямата стойност и регулирайте чашката според комфорта.</li>\n    </ul>\n  </div>\n\n  <div class=\"grid\">\n    <div class=\"field\">\n      <label for=\"underband\">Обиколка под гърдите (см)</label>\n      <input id=\"underband\" type=\"number\" min=\"50\" step=\"0.5\" placeholder=\"напр. 75\">\n    </div>\n    <div class=\"field\">\n      <label for=\"bust\">Обиколка на гърдите (см)</label>\n      <input id=\"bust\" type=\"number\" min=\"60\" step=\"0.5\" placeholder=\"напр. 92\">\n    </div>\n  </div>\n\n  <div class=\"actions\">\n    <button id=\"calcBra\">Изчисли размер</button>\n    <div id=\"clearBra\" style=\"cursor:pointer;color:#0073e6;text-decoration:underline;\">Изчисти</div>\n  </div>\n\n  <div id=\"braResult\" class=\"result\"></div>\n  <div id=\"braNote\" class=\"note\"></div>\n</div>\n\n<script>\n(function(){\n  var elUnder = document.getElementById('underband');\n  var elBust = document.getElementById('bust');\n  var btn = document.getElementById('calcBra');\n  var clr = document.getElementById('clearBra');\n  var out = document.getElementById('braResult');\n  var note = document.getElementById('braNote');\n\n  var tipsToggle = document.getElementById('toggleBraTips');\n  var tipsBox = document.getElementById('braTips');\n  tipsToggle.addEventListener('click', function(){\n    var shown = tipsBox.style.display === 'block';\n    tipsBox.style.display = shown ? 'none' : 'block';\n    tipsBox.setAttribute('aria-hidden', shown ? 'true' : 'false');\n    tipsToggle.textContent = shown ? 'Съвети за измерване ▾' : 'Съвети за измерване ▴';\n  });\n\n  var cupMap = [\n    { maxDiff: 9,  cup: \"AA\" },\n    { maxDiff: 11, cup: \"A\" },\n    { maxDiff: 13, cup: \"B\" },\n    { maxDiff: 15, cup: \"C\" },\n    { maxDiff: 17, cup: \"D\" },\n    { maxDiff: 19, cup: \"E\" },\n    { maxDiff: 21, cup: \"F\" },\n    { maxDiff: 999, cup: \"G+\" }\n  ];\n\n  function roundBand(n){\n    var r = Math.round(n/5)*5;\n    if(r < 60) r = 60;\n    return r;\n  }\n\n  function detectCup(diff){\n    for(var i=0;i<cupMap.length;i++){\n      if(diff <= cupMap[i].maxDiff) return cupMap[i].cup;\n    }\n    return \"—\";\n  }\n\n  btn.addEventListener('click', function(){\n    out.style.display = 'none';\n    note.textContent = '';\n    var under = parseFloat(elUnder.value);\n    var bust = parseFloat(elBust.value);\n\n    if(isNaN(under) || isNaN(bust) || under <= 0 || bust <= 0){\n      out.style.display = 'block';\n      out.style.color = '#b00';\n      out.textContent = 'Въведете валидни измервания (см) за подгърдие и гръдна обиколка.';\n      return;\n    }\n\n    var band = roundBand(under);\n    var diff = Math.round((bust - band) * 10) / 10;\n    var cup = detectCup(diff);\n\n    out.style.display = 'block';\n    out.style.color = '#062';\n    out.innerHTML = 'Препоръчителен размер: <strong>' + band + ' ' + cup + '</strong>';\n\n    var noteText = 'Изчислено: обиколка под гърдите ' + under + ' cm → банда ' + band + ' cm; разлика: ' + diff + ' cm.';\n    if(cup === \"G+\") noteText += ' Голяма разлика — помислете за модели с по-голяма чашка.';\n    note.textContent = noteText;\n  });\n\n  clr.addEventListener('click', function(){\n    elUnder.value = '';\n    elBust.value = '';\n    out.style.display = 'none';\n    note.textContent = '';\n  });\n\n  [elUnder, elBust].forEach(function(el){\n    el.addEventListener('keydown', function(e){ if(e.key === 'Enter') btn.click(); });\n  });\n})();\n</script>"
-                            },
-                            "blocks": {}
-                        },
-                        "image_d8Lbwn": {
-                            "type": "image",
-                            "name": "t:names.image",
-                            "disabled": true,
-                            "settings": {
-                                "image": "shopify://shop_images/size-table-small.jpg",
-                                "link": "",
-                                "image_ratio": "adapt",
-                                "width": "fill",
-                                "custom_width": 100,
-                                "width_mobile": "fill",
-                                "custom_width_mobile": 100,
-                                "height": "fit",
-                                "border": "none",
-                                "border_width": 1,
-                                "border_opacity": 100,
-                                "border_radius": 0,
-                                "padding-block-start": 0,
-                                "padding-block-end": 0,
-                                "padding-inline-start": 0,
-                                "padding-inline-end": 0
-                            },
-                            "blocks": {}
-                        },
-                        "accordion_XJ8UJt": {
-                            "type": "accordion",
-                            "name": "t:names.accordion",
-                            "settings": {
-                                "icon": "caret",
-                                "dividers": true,
-                                "type_preset": "h6",
-                                "inherit_color_scheme": true,
-                                "color_scheme": "",
-                                "border": "none",
-                                "border_width": 1,
-                                "border_opacity": 100,
-                                "border_radius": 0,
-                                "padding-block-start": 0,
-                                "padding-block-end": 0,
-                                "padding-inline-start": 0,
-                                "padding-inline-end": 0
-                            },
-                            "blocks": {
-                                "accordion_row_PPBBMU": {
-                                    "type": "_accordion-row",
-                                    "settings": {
-                                        "heading": "ДОСТАВКА И ПЛАЩАНЕ",
-                                        "open_by_default": false,
-                                        "icon": "none",
-                                        "width": 20
-                                    },
-                                    "blocks": {
-                                        "text_P336YL": {
-                                            "type": "text",
-                                            "settings": {
-                                                "text": "<p>Разбираемо е, че стойността на доставката често тежи. <br/>Ние предложихме гъвкави опции - вие избирате начин на доставка и плащате според услуга и общата стойност на поръчката.</p><p>За поръчки над 50 € (≈97.79 лв.) доставката е безплатна.</p><p>За поръчки под 50 € (≈97.79 лв.) таксите са:</p><ul><li>3.75 € (≈7.33 лв.) до офис на Еконт</li><li>4.93 € (≈9.64 лв.) до адрес</li></ul><p>Посочените цени важат за територията на цялата страна.</p>",
-                                                "width": "100%",
-                                                "max_width": "normal",
-                                                "alignment": "left",
-                                                "type_preset": "rte",
-                                                "font": "var(--font-body--family)",
-                                                "font_size": "1rem",
-                                                "line_height": "normal",
-                                                "letter_spacing": "normal",
-                                                "case": "none",
-                                                "wrap": "pretty",
-                                                "color": "var(--color-foreground)",
-                                                "background": false,
-                                                "background_color": "#00000026",
-                                                "corner_radius": 0,
-                                                "padding-block-start": 0,
-                                                "padding-block-end": 0,
-                                                "padding-inline-start": 0,
-                                                "padding-inline-end": 0
-                                            },
-                                            "blocks": {}
-                                        }
-                                    },
-                                    "block_order": [
-                                        "text_P336YL"
-                                    ]
-                                },
-                                "accordion_row_Nmp8iR": {
-                                    "type": "_accordion-row",
-                                    "settings": {
-                                        "heading": "ВАЖНО",
-                                        "open_by_default": false,
-                                        "icon": "none",
-                                        "width": 24
-                                    },
-                                    "blocks": {
-                                        "text_ENFf9p": {
-                                            "type": "text",
-                                            "settings": {
-                                                "text": "<p>Ние подлагаме всяка дреха, която пристига при нас, на няколко щателни проверки за качество. За удобство и точност продуктите са допълнително оразмерени спрямо таблицата с размери, посочена в сайта. Обувките и аксесоарите също преминават строг контрол за качество при постъпване.</p><p>Препоръчителни инструкции за поддръжка на дрехи:</p><ul><li>Ръчно пране или пране на ниска температура (до 30°C).</li><li>Не използвайте сушилня за допълнителна обработка.</li></ul><p>Препоръчителни инструкции за поддръжка на обувки и аксесоари:</p><ul><li>Почистване на ръка; избягвайте силни почистващи препарати.</li><li>Не ператe в пералня и не оставяйте на пряка слънчева светлина.</li></ul><p>С всяка поръчка получавате гаранцията на Benny Boutique, че ще получите пратката си в перфектен вид, плюс:</p><ul><li>Бърза доставка</li><li>Тест и преглед преди изпращане</li><li>Безплатна доставка за поръчки над 50€ / 97.79 лв</li><li>Безплатна замяна за артикули на стойност над 35 € / 68.45 лв<br/><br/></li></ul>",
-                                                "width": "100%",
-                                                "max_width": "normal",
-                                                "alignment": "left",
-                                                "type_preset": "rte",
-                                                "font": "var(--font-body--family)",
-                                                "font_size": "1rem",
-                                                "line_height": "normal",
-                                                "letter_spacing": "normal",
-                                                "case": "none",
-                                                "wrap": "pretty",
-                                                "color": "var(--color-foreground)",
-                                                "background": false,
-                                                "background_color": "#00000026",
-                                                "corner_radius": 0,
-                                                "padding-block-start": 0,
-                                                "padding-block-end": 0,
-                                                "padding-inline-start": 0,
-                                                "padding-inline-end": 0
-                                            },
-                                            "blocks": {}
-                                        }
-                                    },
-                                    "block_order": [
-                                        "text_ENFf9p"
-                                    ]
-                                },
-                                "accordion_row_kKD7ap": {
-                                    "type": "_accordion-row",
-                                    "settings": {
-                                        "heading": "ЧЕСТО ЗАДАВАНИ ВЪПРОСИ",
-                                        "open_by_default": false,
-                                        "icon": "none",
-                                        "width": 20
-                                    },
-                                    "blocks": {
-                                        "text_wU8hYF": {
-                                            "type": "text",
-                                            "settings": {
-                                                "text": "<ol><li><strong>Как да поръчам?</strong><br/>Можете да поръчате директно от сайта или по телефон на 0885905673.</li><li><strong>Мога ли да променя вече </strong>направена поръчка?<br/>Да — ако поръчката не е изпратена още. Колкото по-скоро се свържете на 0885905673, толкова по-голяма е вероятността да успеем да направим промяната.</li><li><strong>Кога да очаквам пратката?</strong><br/>Обикновено доставката отнема до два работни дни. Пратки до големи градове или до офис на куриер обикновено пристигат на следващия работен ден. Поръчки, направени след 13:00, се изпращат на следващия работен ден.</li><li><strong>Изпращате ли до офис на куриер?</strong><br/>Да — работим с Еконт и можете да изберете доставка до техен офис при финализиране на поръчката.</li><li><strong>Мога ли да върна артикул?</strong><br/>Върнете артикула чрез най-близкия офис на Еконт, придружен от попълнен формуляр за връщане. След получаване и обработка ще възстановим сумата по банков път (IBAN), в срок до 3 работни дни от датата на получаване. Връщането е за сметка на клиента, освен при дефект или при изпратен различен артикул/размер/цвят. Връщане в физически магазин не е възможно. Възстановяването се извършва единствено по банков път.</li><li><strong>Мога ли да заменя артикул?</strong><br/>За замяна поръчайте желания артикул и ни върнете безплатно стоката, от която се отказвате. Колкото по-бързо го направите, толкова по-вероятно е да има наличности. Подробности има на страницата за връщания и замени.</li><li><strong>Как да избера правилния размер?</strong><br/>За всеки артикул има вграден калкулатор за размери - моля използвайте го преди поръчка. Ако се колебаете или имате въпроси, обадете ни се на +359 885 905 673 или пишете и ще ви съдействаме при избора.</li></ol>",
-                                                "width": "100%",
-                                                "max_width": "normal",
-                                                "alignment": "left",
-                                                "type_preset": "rte",
-                                                "font": "var(--font-body--family)",
-                                                "font_size": "1rem",
-                                                "line_height": "normal",
-                                                "letter_spacing": "normal",
-                                                "case": "none",
-                                                "wrap": "pretty",
-                                                "color": "var(--color-foreground)",
-                                                "background": false,
-                                                "background_color": "#00000026",
-                                                "corner_radius": 0,
-                                                "padding-block-start": 0,
-                                                "padding-block-end": 0,
-                                                "padding-inline-start": 0,
-                                                "padding-inline-end": 0
-                                            },
-                                            "blocks": {}
-                                        }
-                                    },
-                                    "block_order": [
-                                        "text_wU8hYF"
-                                    ]
-                                }
-                            },
-                            "block_order": [
-                                "accordion_row_PPBBMU",
-                                "accordion_row_Nmp8iR",
-                                "accordion_row_kKD7ap"
-                            ]
-                        },
-                        "text_why_to_like_metafield": {
-                            "type": "custom-liquid",
-                            "name": "Why to like",
-                            "settings": {
-                                "custom_liquid": "{% if closest.product.metafields.custom[\"why-to-like\"] != blank %}<p><strong>Защо ще ви хареса:</strong></p>{{ closest.product.metafields.custom[\"why-to-like\"] | metafield_tag }}{% endif %}"
-                            },
-                            "blocks": {}
-                        }
-                    },
-                    "block_order": [
-                        "group_icgrde",
-                        "divider_VJhene",
-                        "variant_picker_R3rGDr",
-                        "buy_buttons_eYQEYi",
-                        "text_aEtTtq",
-                        "custom_liquid_specs_origin_after_desc",
-                        "custom_liquid_NVaRBg",
-                        "text_why_to_like_metafield",
-                        "custom_liquid_AjaUwY",
-                        "custom_liquid_XaLk66",
-                        "image_d8Lbwn",
-                        "accordion_XJ8UJt"
-                    ]
-                }
-            },
-            "settings": {
-                "content_width": "content-center-aligned",
-                "desktop_media_position": "left",
-                "equal_columns": false,
-                "limit_details_width": false,
-                "gap": 48,
-                "enable_sticky_add_to_cart": true,
+  "sections": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "grid",
+            "media_columns": "two",
+            "image_gap": 4,
+            "large_first_image": false,
+            "icons_style": "chevron_large",
+            "slideshow_controls_style": "dots",
+            "slideshow_mobile_controls_style": "dots",
+            "thumbnail_position": "right",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 0,
+            "extend_media": false,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 28,
+            "sticky_details_desktop": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "scheme-1",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_icgrde": {
+              "type": "group",
+              "name": "Header",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
                 "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_xrnftG": {
+                  "type": "text",
+                  "name": "Product title",
+                  "settings": {
+                    "text": "<h1>{{ closest.product.title }}</h1>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h3",
+                    "font": "var(--font-primary--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "custom_liquid_kchNA7": {
+                  "type": "custom-liquid",
+                  "name": "Серия",
+                  "settings": {
+                    "custom_liquid": "{% if product.metafields.custom.serie and product.metafields.custom.serie != \"\" %} \n<div class='product-serie'>\n<b>Серия:</b> {{ product.metafields.custom.serie }}\n</div>\n{% endif %}\n\n<style>\n.product-serie { \n  font-size: 14px; \n  color:#666; \n  margin-top:6px; \n}\n</style>"
+                  },
+                  "blocks": {}
+                },
+                "sku_NDWVfE": {
+                  "type": "sku",
+                  "name": "t:names.product_sku",
+                  "settings": {
+                    "type_preset": "custom",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "price_tVjtKg": {
+                  "type": "price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": true,
+                    "show_tax_info": true,
+                    "type_preset": "custom",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1.125rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_xrnftG",
+                "custom_liquid_kchNA7",
+                "sku_NDWVfE",
+                "price_tVjtKg"
+              ]
+            },
+            "divider_VJhene": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "width_percent": 100,
                 "padding-block-start": 0,
                 "padding-block-end": 0
-            }
-        },
-        "product_recommendations_qggXJq": {
-            "type": "product-recommendations",
-            "blocks": {
-                "text_cbcgyb": {
-                    "type": "text",
-                    "name": "t:names.header",
-                    "settings": {
-                        "text": "<h3>Може да харесате </h3>",
-                        "width": "fit-content",
+              },
+              "blocks": {}
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "show_pickup_availability": true,
+                "show_notify_when_sold_out": true,
+                "gift_card_form": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "text_aEtTtq": {
+              "type": "text",
+              "name": "Product description",
+              "settings": {
+                "text": "{{ closest.product.description }}<p></p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "custom_liquid_specs_origin_after_desc": {
+              "type": "custom-liquid",
+              "name": "Specs origin",
+              "settings": {
+                "custom_liquid": "{% render 'product-specs-origin', product: product %}"
+              },
+              "blocks": {}
+            },
+            "custom_liquid_AjaUwY": {
+              "type": "custom-liquid",
+              "name": "Linked Products",
+              "settings": {
+                "custom_liquid": "{% render 'related-products', product: closest.product %}"
+              },
+              "blocks": {}
+            },
+            "custom_liquid_XaLk66": {
+              "type": "custom-liquid",
+              "name": "Size calculator",
+              "settings": {
+                "custom_liquid": "<style>\n.bra-calculator { max-width:680px; padding:16px; border:1px solid #e4e4e4; background:#fff; border-radius:8px; font-family:inherit; }\n.bra-calculator h3 { margin:0 0 12px; font-size:18px; display:flex; align-items:center; }\n.bra-calculator .tips-toggle { margin-left:0; margin-top:8px; font-size:13px; color:#0073e6; cursor:pointer; text-decoration:underline; display:block; }\n.bra-calculator .grid { display:flex; gap:0px; flex-wrap:wrap; margin-bottom:12px; }\n.bra-calculator .field { flex:0 1 auto; }\n.bra-calculator label { display:block; font-size:13px; margin-bottom:6px; color:#333; }\n.bra-calculator input[type=\"number\"] { width:100%; padding:6px 8px; border:1px solid #ccc; border-radius:6px; font-size:14px; line-height:1; height:32px; }\n.bra-calculator .actions { display:flex; gap:8px; align-items:center; margin-bottom:12px; }\n.bra-calculator button { background:#111; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; }\n.bra-calculator .result { padding:12px; border-radius:6px; background:#f7f9fb; border:1px solid #e6eef6; color:#062; font-weight:600; display:none; }\n.bra-calculator .note { margin-top:8px; font-size:13px; color:#666; }\n.bra-calculator .tips { margin:12px 0; margin-bottom:6px;padding:12px; background:#fcfcfd; border:1px solid #eef3fb; border-radius:6px; display:none; font-size:14px; color:#222; }\n.bra-calculator .tips ul { margin:8px 0 0 1.1em; }\n@media (max-width:520px){ .bra-calculator .grid { flex-direction:column; } .bra-calculator .tips-toggle { display:block; margin-top:8px; } }\n</style>\n\n<div class=\"bra-calculator\" id=\"braCalc\">\n  <h3>Калкулатор за размер сутиен (EU)</h3>\n\n  <div>\n    <span class=\"tips-toggle\" id=\"toggleBraTips\">Съвети за измерване ▾</span>\n  </div>\n\n  <div class=\"tips\" id=\"braTips\" aria-hidden=\"true\">\n    <strong>Съвети при измерване</strong>\n    <ul>\n      <li><strong>Обиколка под гърдите:</strong> измерете точно под гърдите, хоризонтално, с плътна но не притискаща лента.</li>\n      <li><strong>Обиколка на гърдите:</strong> измерете най‑пълната част на гърдите, хоризонтално.</li>\n      <li>Ако сте между два размера на лентата, изберете по‑голямата стойност и регулирайте чашката според комфорта.</li>\n    </ul>\n  </div>\n\n  <div class=\"grid\">\n    <div class=\"field\">\n      <label for=\"underband\">Обиколка под гърдите (см)</label>\n      <input id=\"underband\" type=\"number\" min=\"50\" step=\"0.5\" placeholder=\"напр. 75\">\n    </div>\n    <div class=\"field\">\n      <label for=\"bust\">Обиколка на гърдите (см)</label>\n      <input id=\"bust\" type=\"number\" min=\"60\" step=\"0.5\" placeholder=\"напр. 92\">\n    </div>\n  </div>\n\n  <div class=\"actions\">\n    <button id=\"calcBra\">Изчисли размер</button>\n    <div id=\"clearBra\" style=\"cursor:pointer;color:#0073e6;text-decoration:underline;\">Изчисти</div>\n  </div>\n\n  <div id=\"braResult\" class=\"result\"></div>\n  <div id=\"braNote\" class=\"note\"></div>\n</div>\n\n<script>\n(function(){\n  var elUnder = document.getElementById('underband');\n  var elBust = document.getElementById('bust');\n  var btn = document.getElementById('calcBra');\n  var clr = document.getElementById('clearBra');\n  var out = document.getElementById('braResult');\n  var note = document.getElementById('braNote');\n\n  var tipsToggle = document.getElementById('toggleBraTips');\n  var tipsBox = document.getElementById('braTips');\n  tipsToggle.addEventListener('click', function(){\n    var shown = tipsBox.style.display === 'block';\n    tipsBox.style.display = shown ? 'none' : 'block';\n    tipsBox.setAttribute('aria-hidden', shown ? 'true' : 'false');\n    tipsToggle.textContent = shown ? 'Съвети за измерване ▾' : 'Съвети за измерване ▴';\n  });\n\n  var cupMap = [\n    { maxDiff: 9,  cup: \"AA\" },\n    { maxDiff: 11, cup: \"A\" },\n    { maxDiff: 13, cup: \"B\" },\n    { maxDiff: 15, cup: \"C\" },\n    { maxDiff: 17, cup: \"D\" },\n    { maxDiff: 19, cup: \"E\" },\n    { maxDiff: 21, cup: \"F\" },\n    { maxDiff: 999, cup: \"G+\" }\n  ];\n\n  function roundBand(n){\n    var r = Math.round(n/5)*5;\n    if(r < 60) r = 60;\n    return r;\n  }\n\n  function detectCup(diff){\n    for(var i=0;i<cupMap.length;i++){\n      if(diff <= cupMap[i].maxDiff) return cupMap[i].cup;\n    }\n    return \"—\";\n  }\n\n  btn.addEventListener('click', function(){\n    out.style.display = 'none';\n    note.textContent = '';\n    var under = parseFloat(elUnder.value);\n    var bust = parseFloat(elBust.value);\n\n    if(isNaN(under) || isNaN(bust) || under <= 0 || bust <= 0){\n      out.style.display = 'block';\n      out.style.color = '#b00';\n      out.textContent = 'Въведете валидни измервания (см) за подгърдие и гръдна обиколка.';\n      return;\n    }\n\n    var band = roundBand(under);\n    var diff = Math.round((bust - band) * 10) / 10;\n    var cup = detectCup(diff);\n\n    out.style.display = 'block';\n    out.style.color = '#062';\n    out.innerHTML = 'Препоръчителен размер: <strong>' + band + ' ' + cup + '</strong>';\n\n    var noteText = 'Изчислено: обиколка под гърдите ' + under + ' cm → банда ' + band + ' cm; разлика: ' + diff + ' cm.';\n    if(cup === \"G+\") noteText += ' Голяма разлика — помислете за модели с по-голяма чашка.';\n    note.textContent = noteText;\n  });\n\n  clr.addEventListener('click', function(){\n    elUnder.value = '';\n    elBust.value = '';\n    out.style.display = 'none';\n    note.textContent = '';\n  });\n\n  [elUnder, elBust].forEach(function(el){\n    el.addEventListener('keydown', function(e){ if(e.key === 'Enter') btn.click(); });\n  });\n})();\n</script>"
+              },
+              "blocks": {}
+            },
+            "image_d8Lbwn": {
+              "type": "image",
+              "name": "t:names.image",
+              "disabled": true,
+              "settings": {
+                "image": "shopify://shop_images/size-table-small.jpg",
+                "link": "",
+                "image_ratio": "adapt",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "accordion_XJ8UJt": {
+              "type": "accordion",
+              "name": "t:names.accordion",
+              "settings": {
+                "icon": "caret",
+                "dividers": true,
+                "type_preset": "h6",
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "accordion_row_product_info": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "ИНФОРМАЦИЯ ЗА ПРОДУКТА",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "custom_liquid_product_specs": {
+                      "type": "custom-liquid",
+                      "settings": {
+                        "custom_liquid": "{% render 'product-specs', product: product %}"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "custom_liquid_product_specs"
+                  ]
+                },
+                "accordion_row_PPBBMU": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "ДОСТАВКА И ПЛАЩАНЕ",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_P336YL": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Разбираемо е, че стойността на доставката често тежи. <br/>Ние предложихме гъвкави опции - вие избирате начин на доставка и плащате според услуга и общата стойност на поръчката.</p><p>За поръчки над 50 € (≈97.79 лв.) доставката е безплатна.</p><p>За поръчки под 50 € (≈97.79 лв.) таксите са:</p><ul><li>3.75 € (≈7.33 лв.) до офис на Еконт</li><li>4.93 € (≈9.64 лв.) до адрес</li></ul><p>Посочените цени важат за територията на цялата страна.</p>",
+                        "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
-                        "type_preset": "h4",
-                        "font": "var(--font-primary--family)",
-                        "font_size": "",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
                         "line_height": "normal",
                         "letter_spacing": "normal",
                         "case": "none",
                         "wrap": "pretty",
-                        "color": "",
+                        "color": "var(--color-foreground)",
                         "background": false,
                         "background_color": "#00000026",
                         "corner_radius": 0,
@@ -532,124 +389,280 @@
                         "padding-block-end": 0,
                         "padding-inline-start": 0,
                         "padding-inline-end": 0
-                    },
-                    "blocks": {}
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_P336YL"
+                  ]
                 },
-                "static-product-card": {
-                    "type": "_product-card",
-                    "name": "t:names.product_card",
-                    "static": true,
-                    "settings": {
-                        "product_card_gap": 8,
-                        "inherit_color_scheme": true,
-                        "color_scheme": "",
-                        "border": "none",
-                        "border_width": 1,
-                        "border_opacity": 100,
-                        "border_radius": 0,
+                "accordion_row_Nmp8iR": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "ВАЖНО",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 24
+                  },
+                  "blocks": {
+                    "text_ENFf9p": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Ние подлагаме всяка дреха, която пристига при нас, на няколко щателни проверки за качество. За удобство и точност продуктите са допълнително оразмерени спрямо таблицата с размери, посочена в сайта. Обувките и аксесоарите също преминават строг контрол за качество при постъпване.</p><p>Препоръчителни инструкции за поддръжка на дрехи:</p><ul><li>Ръчно пране или пране на ниска температура (до 30°C).</li><li>Не използвайте сушилня за допълнителна обработка.</li></ul><p>Препоръчителни инструкции за поддръжка на обувки и аксесоари:</p><ul><li>Почистване на ръка; избягвайте силни почистващи препарати.</li><li>Не ператe в пералня и не оставяйте на пряка слънчева светлина.</li></ul><p>С всяка поръчка получавате гаранцията на Benny Boutique, че ще получите пратката си в перфектен вид, плюс:</p><ul><li>Бърза доставка</li><li>Тест и преглед преди изпращане</li><li>Безплатна доставка за поръчки над 50€ / 97.79 лв</li><li>Безплатна замяна за артикули на стойност над 35 € / 68.45 лв<br/><br/></li></ul>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
                         "padding-block-start": 0,
-                        "padding-block-end": 8,
+                        "padding-block-end": 0,
                         "padding-inline-start": 0,
                         "padding-inline-end": 0
-                    },
-                    "blocks": {
-                        "product_card_gallery_DNizbJ": {
-                            "type": "_product-card-gallery",
-                            "name": "t:names.product_card_media",
-                            "settings": {
-                                "image_ratio": "adapt",
-                                "border": "none",
-                                "border_width": 1,
-                                "border_opacity": 100,
-                                "border_radius": 0,
-                                "padding-block-start": 0,
-                                "padding-block-end": 0,
-                                "padding-inline-start": 0,
-                                "padding-inline-end": 0
-                            },
-                            "blocks": {}
-                        },
-                        "product_title_M7MJkb": {
-                            "type": "product-title",
-                            "name": "t:names.product_title",
-                            "settings": {
-                                "width": "100%",
-                                "max_width": "normal",
-                                "alignment": "left",
-                                "type_preset": "rte",
-                                "font": "var(--font-body--family)",
-                                "font_size": "1rem",
-                                "line_height": "normal",
-                                "letter_spacing": "normal",
-                                "case": "none",
-                                "wrap": "pretty",
-                                "color": "var(--color-foreground)",
-                                "background": false,
-                                "background_color": "#00000026",
-                                "corner_radius": 0,
-                                "padding-block-start": 4,
-                                "padding-block-end": 0,
-                                "padding-inline-start": 0,
-                                "padding-inline-end": 0
-                            },
-                            "blocks": {}
-                        },
-                        "price_gLWgA6": {
-                            "type": "price",
-                            "settings": {
-                                "show_sale_price_first": true,
-                                "show_installments": false,
-                                "show_tax_info": false,
-                                "type_preset": "h6",
-                                "width": "100%",
-                                "alignment": "left",
-                                "font": "var(--font-body--family)",
-                                "font_size": "1rem",
-                                "line_height": "normal",
-                                "letter_spacing": "normal",
-                                "case": "none",
-                                "color": "var(--color-foreground)",
-                                "padding-block-start": 0,
-                                "padding-block-end": 0,
-                                "padding-inline-start": 0,
-                                "padding-inline-end": 0
-                            },
-                            "blocks": {}
-                        }
-                    },
-                    "block_order": [
-                        "product_card_gallery_DNizbJ",
-                        "product_title_M7MJkb",
-                        "price_gLWgA6"
-                    ]
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_ENFf9p"
+                  ]
+                },
+                "accordion_row_kKD7ap": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "ЧЕСТО ЗАДАВАНИ ВЪПРОСИ",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_wU8hYF": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<ol><li><strong>Как да поръчам?</strong><br/>Можете да поръчате директно от сайта или по телефон на 0885905673.</li><li><strong>Мога ли да променя вече </strong>направена поръчка?<br/>Да — ако поръчката не е изпратена още. Колкото по-скоро се свържете на 0885905673, толкова по-голяма е вероятността да успеем да направим промяната.</li><li><strong>Кога да очаквам пратката?</strong><br/>Обикновено доставката отнема до два работни дни. Пратки до големи градове или до офис на куриер обикновено пристигат на следващия работен ден. Поръчки, направени след 13:00, се изпращат на следващия работен ден.</li><li><strong>Изпращате ли до офис на куриер?</strong><br/>Да — работим с Еконт и можете да изберете доставка до техен офис при финализиране на поръчката.</li><li><strong>Мога ли да върна артикул?</strong><br/>Върнете артикула чрез най-близкия офис на Еконт, придружен от попълнен формуляр за връщане. След получаване и обработка ще възстановим сумата по банков път (IBAN), в срок до 3 работни дни от датата на получаване. Връщането е за сметка на клиента, освен при дефект или при изпратен различен артикул/размер/цвят. Връщане в физически магазин не е възможно. Възстановяването се извършва единствено по банков път.</li><li><strong>Мога ли да заменя артикул?</strong><br/>За замяна поръчайте желания артикул и ни върнете безплатно стоката, от която се отказвате. Колкото по-бързо го направите, толкова по-вероятно е да има наличности. Подробности има на страницата за връщания и замени.</li><li><strong>Как да избера правилния размер?</strong><br/>За всеки артикул има вграден калкулатор за размери - моля използвайте го преди поръчка. Ако се колебаете или имате въпроси, обадете ни се на +359 885 905 673 или пишете и ще ви съдействаме при избора.</li></ol>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_wU8hYF"
+                  ]
                 }
+              },
+              "block_order": [
+                "accordion_row_product_info",
+                "accordion_row_PPBBMU",
+                "accordion_row_Nmp8iR",
+                "accordion_row_kKD7ap"
+              ]
             },
-            "block_order": [
-                "text_cbcgyb"
-            ],
-            "name": "t:names.product_recommendations",
-            "settings": {
-                "product": "{{ closest.product }}",
-                "recommendation_type": "related",
-                "layout_type": "grid",
-                "carousel_on_mobile": false,
-                "max_products": 4,
-                "columns": 4,
-                "mobile_columns": "2",
-                "columns_gap": 12,
-                "rows_gap": 24,
-                "icons_style": "arrow",
-                "icons_shape": "none",
-                "section_width": "page-width",
-                "gap": 28,
-                "color_scheme": "scheme-1",
-                "padding-block-start": 48,
-                "padding-block-end": 48
+            "text_why_to_like_metafield": {
+              "type": "custom-liquid",
+              "name": "Why to like",
+              "settings": {
+                "custom_liquid": "{% if closest.product.metafields.custom[\"why-to-like\"] != blank %}<p><strong>Защо ще ви хареса:</strong></p>{{ closest.product.metafields.custom[\"why-to-like\"] | metafield_tag }}{% endif %}"
+              },
+              "blocks": {}
             }
+          },
+          "block_order": [
+            "group_icgrde",
+            "divider_VJhene",
+            "variant_picker_R3rGDr",
+            "buy_buttons_eYQEYi",
+            "text_aEtTtq",
+            "custom_liquid_specs_origin_after_desc",
+            "text_why_to_like_metafield",
+            "custom_liquid_AjaUwY",
+            "custom_liquid_XaLk66",
+            "image_d8Lbwn",
+            "accordion_XJ8UJt"
+          ]
         }
+      },
+      "settings": {
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": false,
+        "limit_details_width": false,
+        "gap": 48,
+        "enable_sticky_add_to_cart": true,
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     },
-    "order": [
-        "main",
-        "product_recommendations_qggXJq"
-    ]
+    "product_recommendations_qggXJq": {
+      "type": "product-recommendations",
+      "blocks": {
+        "text_cbcgyb": {
+          "type": "text",
+          "name": "t:names.header",
+          "settings": {
+            "text": "<h3>Може да харесате </h3>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h4",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_DNizbJ": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_M7MJkb": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_gLWgA6": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_DNizbJ",
+            "product_title_M7MJkb",
+            "price_gLWgA6"
+          ]
+        }
+      },
+      "block_order": [
+        "text_cbcgyb"
+      ],
+      "name": "t:names.product_recommendations",
+      "settings": {
+        "product": "{{ closest.product }}",
+        "recommendation_type": "related",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 4,
+        "columns": 4,
+        "mobile_columns": "2",
+        "columns_gap": 12,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product_recommendations_qggXJq"
+  ]
 }

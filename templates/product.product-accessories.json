@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -286,14 +277,6 @@
               },
               "blocks": {}
             },
-            "custom_liquid_RXbicL": {
-              "type": "custom-liquid",
-              "name": "Specs",
-              "settings": {
-                "custom_liquid": "<div class=\"product-specs\">\n  {% if product.metafields.custom.specs_text and product.metafields.custom.specs_text != '' %}\n    <b>Характеристики:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.specs_text | metafield_tag }}</div>\n  {% endif %}  \n  {% if product.metafields.custom.wearing_style and product.metafields.custom.wearing_style != '' %}\n    <b>Начин на носене:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.wearing_style | metafield_tag }}</div>\n  {% endif %}\n  {% if product.metafields.custom.choice_advices and product.metafields.custom.choice_advices != '' %}\n    <b>Съвети за избор:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.choice_advices | metafield_tag }}</div>\n  {% endif %}\n  {% if product.metafields.custom.care_items and product.metafields.custom.care_items != '' %}\n    <b>Съвети за поддръжка:</b>\n    <div class=\"specs-richtext\">{{ product.metafields.custom.care_items | metafield_tag }}</div>\n  {% endif %}  \n</div>\n\n<style>\n  .product-specs {\n    margin-top: 1rem;\n    padding: 1rem;\n    background-color: #f9f9f9;\n    border: 1px solid #ddd;\n  }\n\n  .product-specs .specs-richtext ul {\n    margin-top: 0.5rem;\n    margin-bottom: 0.75rem;\n    padding-left: 1.25rem;\n  }\n\n  .product-specs .specs-richtext p {\n    margin-top: 0.5rem;\n    margin-bottom: 0.75rem;\n  }\n</style>"
-              },
-              "blocks": {}
-            },
             "custom_liquid_YVYrqF": {
               "type": "custom-liquid",
               "name": "Linked Products",
@@ -321,6 +304,27 @@
                 "padding-inline-end": 0
               },
               "blocks": {
+                "accordion_row_product_info": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "ИНФОРМАЦИЯ ЗА ПРОДУКТА",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "custom_liquid_product_specs": {
+                      "type": "custom-liquid",
+                      "settings": {
+                        "custom_liquid": "{% render 'product-specs', product: product %}"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "custom_liquid_product_specs"
+                  ]
+                },
                 "accordion_row_PPBBMU": {
                   "type": "_accordion-row",
                   "settings": {
@@ -440,6 +444,7 @@
                 }
               },
               "block_order": [
+                "accordion_row_product_info",
                 "accordion_row_PPBBMU",
                 "accordion_row_Nmp8iR",
                 "accordion_row_kKD7ap"
@@ -454,7 +459,6 @@
             "text_aEtTtq",
             "custom_liquid_specs_origin_after_desc",
             "text_why_to_like_metafield",
-            "custom_liquid_RXbicL",
             "custom_liquid_YVYrqF",
             "accordion_XJ8UJt"
           ]
